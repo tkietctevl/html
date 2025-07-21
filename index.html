@@ -1,104 +1,165 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>NGUYEN TUAN KIET H4X</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TuanKiet88</title>
   <style>
-    @keyframes rainbow {
-      0%{color: red;}
-      16%{color: orange;}
-      32%{color: yellow;}
-      48%{color: green;}
-      64%{color: blue;}
-      80%{color: indigo;}
-      100%{color: violet;}
-    }
-
     body {
-      background-color: #000;
       font-family: Arial, sans-serif;
-      text-align: center;
+      background: radial-gradient(circle, #111, #000);
       color: white;
+      text-align: center;
       margin: 0;
-      padding: 20px;
+      padding: 0;
     }
-
     h1 {
-      font-size: 36px;
-      animation: rainbow 3s infinite;
-    }
-
-    .menu-box {
-      border: 3px solid #00ff00;
-      border-radius: 12px;
-      padding: 20px;
-      width: 300px;
-      margin: 20px auto;
-      background-color: rgba(0,0,0,0.6);
-    }
-
-    label, input, button {
-      display: block;
-      margin: 10px auto;
-      font-size: 16px;
-    }
-
-    .slider {
-      width: 100%;
-    }
-
-    .info {
       margin-top: 20px;
-      animation: rainbow 3s infinite;
+      color: gold;
+      text-shadow: 0 0 10px red;
     }
-
-    audio {
-      display: none;
+    #game-area {
+      margin-top: 20px;
+    }
+    .dice {
+      font-size: 60px;
+      animation: spin 0.5s infinite linear;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 18px;
+      background-color: #222;
+      color: white;
+      border: 2px solid gold;
+      cursor: pointer;
+    }
+    .bet-options button {
+      background-color: #333;
+    }
+    #top-users {
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-
   <audio autoplay loop>
-    <source src="nhacnen.mp3" type="audio/mpeg">
-    Trình duyệt của bạn không hỗ trợ audio.
+    <source src="casino.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát nhạc.
   </audio>
 
-  <h1>NGUYEN TUAN KIET H4X !</h1>
+  <h1>🎲 TuanKiet88🎲</h1>
 
-  <div class="menu-box" id="loginBox">
-    <h2>Đăng Nhập</h2>
-    <input type="text" id="username" placeholder="Tài khoản">
-    <input type="password" id="password" placeholder="Mật khẩu">
-    <button onclick="login()">Mở Menu</button>
+  <div id="auth">
+    <input id="username" placeholder="Tên đăng nhập" />
+    <button onclick="register()">Đăng ký</button>
+    <button onclick="login()">Đăng nhập</button>
   </div>
 
-  <div class="menu-box" id="menuBox" style="display: none;">
-    <h2 class="rainbow">Menu Hack Free Fire</h2>
-    <label>Aimlock: <input type="checkbox"></label>
-    <label>FOV: <input type="range" class="slider" min="0" max="180" value="90"></label>
-    <label>Tốc độ di chuyển: <input type="range" class="slider" min="1" max="10" value="5"></label>
-    <label>Wallhack: <input type="checkbox"></label>
-    <label>ESP: <input type="checkbox"></label>
-    <label>Auto Headshot: <input type="checkbox"></label>
-  </div>
+  <div id="game-area" style="display:none">
+    <h2 id="welcome"></h2>
+    <p>Số dư: <span id="balance">0</span> VNĐ</p>
 
-  <div class="info">
-    <p>📘 Facebook Admin: <a href="https://www.facebook.com/lethimcooknowzz" target="_blank" style="color: #00ffff;">Nguyen Tuan Kiet (Mực)</a></p>
-    <p>📱 Zalo Admin: <span style="color: #00ffcc;">0865357271</span></p>
-    <p>🕒 Thời gian online: 24/7</p>
+    <div class="bet-options">
+      <button onclick="placeBet(1000)">1000</button>
+      <button onclick="placeBet(5000)">5000</button>
+      <button onclick="placeBet(10000)">10000</button>
+      <button onclick="placeBet(100000)">100000</button>
+      <button onclick="placeBet(500000)">500000</button>
+      <button onclick="allIn()">All-In</button>
+    </div>
+
+    <div style="margin:10px;">
+      <button onclick="startRound()">🎲 Mở bát 🎲</button>
+    </div>
+
+    <div id="dice-result">
+      <div class="dice" id="dice">🎲</div>
+      <p id="result-text"></p>
+    </div>
+
+    <div id="top-users">
+      <h3>Top Người Chơi</h3>
+      <ol id="top-list"></ol>
+    </div>
   </div>
 
   <script>
+    let users = JSON.parse(localStorage.getItem("users") || "{}");
+    let currentUser = null;
+
+    function saveUsers() {
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    function register() {
+      const name = document.getElementById("username").value;
+      if (users[name]) return alert("Tên đã tồn tại!");
+      users[name] = { money: 50000 };
+      saveUsers();
+      alert("Đăng ký thành công!");
+    }
+
     function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-      if (user === "admin" && pass === "23052010") {
-        document.getElementById("loginBox").style.display = "none";
-        document.getElementById("menuBox").style.display = "block";
-      } else {
-        alert("Sai tài khoản hoặc mật khẩu!");
-      }
+      const name = document.getElementById("username").value;
+      if (!users[name]) return alert("Không tìm thấy tài khoản!");
+      currentUser = name;
+      document.getElementById("auth").style.display = "none";
+      document.getElementById("game-area").style.display = "block";
+      updateUI();
+    }
+
+    function updateUI() {
+      document.getElementById("welcome").innerText = "Xin chào, " + currentUser;
+      document.getElementById("balance").innerText = users[currentUser].money.toLocaleString();
+      updateTopList();
+    }
+
+    function updateTopList() {
+      const sorted = Object.entries(users).sort((a, b) => b[1].money - a[1].money);
+      document.getElementById("top-list").innerHTML = sorted.slice(0, 5).map(
+        ([name, data]) => `<li>${name}: ${data.money.toLocaleString()} VNĐ</li>`
+      ).join("");
+    }
+
+    function placeBet(amount) {
+      if (!currentUser) return;
+      if (users[currentUser].money < amount) return alert("Không đủ tiền!");
+      users[currentUser].money -= amount;
+      users[currentUser].bet = amount;
+      saveUsers();
+      updateUI();
+      alert("Đã đặt cược: " + amount.toLocaleString() + " VNĐ");
+    }
+
+    function allIn() {
+      placeBet(users[currentUser].money);
+    }
+
+    function startRound() {
+      if (!users[currentUser].bet) return alert("Bạn chưa đặt cược!");
+      const result = Math.floor(Math.random() * 6 + 1) + Math.floor(Math.random() * 6 + 1);
+      const isTai = result >= 11;
+      const win = Math.random() > 0.5;
+      document.getElementById("dice").innerText = "🎲🎲";
+      setTimeout(() => {
+        document.getElementById("dice").classList.remove("dice");
+        document.getElementById("dice").innerText = result;
+        if (win) {
+          users[currentUser].money += users[currentUser].bet * 2;
+          document.getElementById("result-text").innerText = "Bạn thắng! Kết quả: " + result + " (" + (isTai ? "Tài" : "Xỉu") + ")";
+        } else {
+          document.getElementById("result-text").innerText = "Bạn thua! Kết quả: " + result + " (" + (isTai ? "Tài" : "Xỉu") + ")";
+        }
+        delete users[currentUser].bet;
+        saveUsers();
+        updateUI();
+      }, 2000);
     }
   </script>
 </body>

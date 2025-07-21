@@ -1,130 +1,104 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>NGUYEN TUAN KIET H4X</title>
   <style>
-    body {
-      margin: 0;
-      background: black;
-      font-family: 'Arial', sans-serif;
-      color: white;
-      text-align: center;
-    }
-
-    .rainbow-text {
-      background-image: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: rainbow 3s linear infinite;
-    }
-
     @keyframes rainbow {
-      to {
-        background-position: 200% center;
-      }
+      0%{color: red;}
+      16%{color: orange;}
+      32%{color: yellow;}
+      48%{color: green;}
+      64%{color: blue;}
+      80%{color: indigo;}
+      100%{color: violet;}
     }
 
-    .container {
-      margin-top: 50px;
-    }
-
-    .login-box {
-      background: #111;
+    body {
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+      margin: 0;
       padding: 20px;
-      border-radius: 10px;
-      display: inline-block;
     }
 
-    input[type="text"],
-    input[type="password"] {
-      padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      border: none;
-      width: 200px;
+    h1 {
+      font-size: 36px;
+      animation: rainbow 3s infinite;
     }
 
-    button {
-      padding: 10px 20px;
-      border: none;
-      background: #00ffcc;
-      color: black;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .menu {
-      display: none;
-      margin-top: 30px;
-      background: #222;
+    .menu-box {
+      border: 3px solid #00ff00;
+      border-radius: 12px;
       padding: 20px;
-      border-radius: 10px;
       width: 300px;
-      margin: auto;
+      margin: 20px auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    label, input, button {
+      display: block;
+      margin: 10px auto;
+      font-size: 16px;
     }
 
     .slider {
       width: 100%;
     }
 
-    #online-time {
+    .info {
       margin-top: 20px;
-      font-size: 14px;
-      color: #ccc;
+      animation: rainbow 3s infinite;
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="rainbow-text">NGUYEN TUAN KIET H4X !</h1>
-
-    <div class="login-box">
-      <input type="text" id="username" placeholder="Tài khoản"><br>
-      <input type="password" id="password" placeholder="Mật khẩu"><br>
-      <button onclick="login()">Mở menu</button>
-    </div>
-
-    <div class="menu" id="menu">
-      <h2 class="rainbow-text">Menu H4X</h2>
-      <label class="rainbow-text">Aimlock: <input type="checkbox"></label><br><br>
-      <label class="rainbow-text">FOV: <input type="range" min="30" max="180" value="90" class="slider"></label><br><br>
-      <label class="rainbow-text">Tốc độ di chuyển: <input type="range" min="1" max="10" value="5" class="slider"></label><br>
-    </div>
-
-    <div id="online-time" class="rainbow-text"></div>
-  </div>
 
   <audio autoplay loop>
     <source src="nhacnen.mp3" type="audio/mpeg">
     Trình duyệt của bạn không hỗ trợ audio.
   </audio>
 
+  <h1>NGUYEN TUAN KIET H4X !</h1>
+
+  <div class="menu-box" id="loginBox">
+    <h2>Đăng Nhập</h2>
+    <input type="text" id="username" placeholder="Tài khoản">
+    <input type="password" id="password" placeholder="Mật khẩu">
+    <button onclick="login()">Mở Menu</button>
+  </div>
+
+  <div class="menu-box" id="menuBox" style="display: none;">
+    <h2 class="rainbow">Menu Hack Free Fire</h2>
+    <label>Aimlock: <input type="checkbox"></label>
+    <label>FOV: <input type="range" class="slider" min="0" max="180" value="90"></label>
+    <label>Tốc độ di chuyển: <input type="range" class="slider" min="1" max="10" value="5"></label>
+    <label>Wallhack: <input type="checkbox"></label>
+    <label>ESP: <input type="checkbox"></label>
+    <label>Auto Headshot: <input type="checkbox"></label>
+  </div>
+
+  <div class="info">
+    <p>📘 Facebook Admin: <a href="https://www.facebook.com/lethimcooknowzz" target="_blank" style="color: #00ffff;">Nguyen Hoa</a></p>
+    <p>📱 Zalo Admin: <span style="color: #00ffcc;">0865357271</span></p>
+    <p>🕒 Thời gian online: 24/7</p>
+  </div>
+
   <script>
     function login() {
-      const user = document.getElementById('username').value;
-      const pass = document.getElementById('password').value;
-      if (user === 'admin' && pass === '23052010') {
-        document.querySelector('.login-box').style.display = 'none';
-        document.getElementById('menu').style.display = 'block';
-        startTimer();
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      if (user === "admin" && pass === "23052010") {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("menuBox").style.display = "block";
       } else {
-        alert('Sai tài khoản hoặc mật khẩu!');
+        alert("Sai tài khoản hoặc mật khẩu!");
       }
-    }
-
-    let startTime;
-    function startTimer() {
-      startTime = new Date();
-      setInterval(() => {
-        const now = new Date();
-        const diff = new Date(now - startTime);
-        const hours = diff.getUTCHours().toString().padStart(2, '0');
-        const minutes = diff.getUTCMinutes().toString().padStart(2, '0');
-        const seconds = diff.getUTCSeconds().toString().padStart(2, '0');
-        document.getElementById('online-time').textContent = `🕒 Thời gian online: ${hours}:${minutes}:${seconds}`;
-      }, 1000);
     }
   </script>
 </body>

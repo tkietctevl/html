@@ -1,80 +1,131 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Hack Free Fire</title>
+  <meta charset="UTF-8" />
+  <title>NGUYEN TUAN KIET H4X</title>
   <style>
     body {
-      background-color: #000;
+      margin: 0;
+      background: black;
+      font-family: 'Arial', sans-serif;
       color: white;
-      font-family: Arial, sans-serif;
       text-align: center;
-      padding: 50px;
     }
-    .rainbow {
-      font-size: 28px;
-      font-weight: bold;
-      background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
+
+    .rainbow-text {
+      background-image: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
       -webkit-background-clip: text;
       color: transparent;
-      animation: rainbow 5s linear infinite;
+      animation: rainbow 3s linear infinite;
     }
+
     @keyframes rainbow {
-      0% {filter: hue-rotate(0deg);}
-      100% {filter: hue-rotate(360deg);}
+      to {
+        background-position: 200% center;
+      }
     }
-    #menu {
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .login-box {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: #00ffcc;
+      color: black;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .menu {
       display: none;
       margin-top: 30px;
-    }
-    .slider {
-      width: 300px;
-    }
-    .box {
-      background: rgba(255,255,255,0.1);
+      background: #222;
       padding: 20px;
-      border-radius: 15px;
+      border-radius: 10px;
+      width: 300px;
+      margin: auto;
+    }
+
+    .slider {
+      width: 100%;
+    }
+
+    #online-time {
       margin-top: 20px;
+      font-size: 14px;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1 class="rainbow-text">NGUYEN TUAN KIET H4X !</h1>
 
-  <h1 class="rainbow">Hack Free Fire Tool 🔥</h1>
-
-  <div id="login">
-    <input type="text" id="user" placeholder="Tài khoản"><br><br>
-    <input type="password" id="pass" placeholder="Mật khẩu"><br><br>
-    <button onclick="checkLogin()">Đăng nhập</button>
-  </div>
-
-  <div id="menu">
-    <h2>🛠️ MENU HACK</h2>
-    <div class="box">
-      <label><input type="checkbox"> Bật Aimlock</label><br><br>
-      <label>FOV: <input type="range" min="0" max="360" class="slider"></label><br><br>
-      <label>Tốc độ: <input type="range" min="1" max="10" class="slider"></label>
+    <div class="login-box">
+      <input type="text" id="username" placeholder="Tài khoản"><br>
+      <input type="password" id="password" placeholder="Mật khẩu"><br>
+      <button onclick="login()">Mở menu</button>
     </div>
+
+    <div class="menu" id="menu">
+      <h2 class="rainbow-text">Menu H4X</h2>
+      <label class="rainbow-text">Aimlock: <input type="checkbox"></label><br><br>
+      <label class="rainbow-text">FOV: <input type="range" min="30" max="180" value="90" class="slider"></label><br><br>
+      <label class="rainbow-text">Tốc độ di chuyển: <input type="range" min="1" max="10" value="5" class="slider"></label><br>
+    </div>
+
+    <div id="online-time" class="rainbow-text"></div>
   </div>
 
-  <!-- Nhạc nền từ GitHub -->
   <audio autoplay loop>
-    <source src="https://raw.githubusercontent.com/USERNAME/REPO/main/nhacnen.mp3" type="audio/mpeg">
+    <source src="nhacnen.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ audio.
   </audio>
 
   <script>
-    function checkLogin() {
-      var u = document.getElementById("user").value;
-      var p = document.getElementById("pass").value;
-      if (u === "admin" && p === "23052010") {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("menu").style.display = "block";
-        alert("Đăng nhập thành công! Nhấn OK để mở Menu.");
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if (user === 'admin' && pass === '23052010') {
+        document.querySelector('.login-box').style.display = 'none';
+        document.getElementById('menu').style.display = 'block';
+        startTimer();
       } else {
-        alert("Sai tài khoản hoặc mật khẩu!");
+        alert('Sai tài khoản hoặc mật khẩu!');
       }
     }
-  </script>
 
+    let startTime;
+    function startTimer() {
+      startTime = new Date();
+      setInterval(() => {
+        const now = new Date();
+        const diff = new Date(now - startTime);
+        const hours = diff.getUTCHours().toString().padStart(2, '0');
+        const minutes = diff.getUTCMinutes().toString().padStart(2, '0');
+        const seconds = diff.getUTCSeconds().toString().padStart(2, '0');
+        document.getElementById('online-time').textContent = `🕒 Thời gian online: ${hours}:${minutes}:${seconds}`;
+      }, 1000);
+    }
+  </script>
 </body>
 </html>

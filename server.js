@@ -24,3 +24,6 @@ app.post('/upload', async (req, res) => {
 });
 
 app.listen(3000, () => console.log("Server chạy 3000"));
+app.get('/', (req, res) => {
+  res.send("Server đang chạy OK");
+});

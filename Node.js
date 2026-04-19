@@ -5,8 +5,8 @@ const fs = require('fs');
 const app = express();
 app.use(express.json({ limit: '10mb' }));
 
-const TOKEN = "BOT_TOKEN";
-const CHAT_ID = "CHAT_ID";
+const TOKEN = "8732812924:AAE-Kss03U1PxK5t-73mpUm4kacQJJ7SbiY";
+const CHAT_ID = "6175217169";
 
 app.post('/upload', async (req, res) => {
   const image = req.body.image.replace(/^data:image\/png;base64,/, "");

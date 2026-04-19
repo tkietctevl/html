@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Nuôi Tôi - Trang Chủ Mobile</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ee8c2b",
+              "background-light": "#f8f7f6",
+              "background-dark": "#221910",
+            },
+            fontFamily: {
+              display: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "2rem",
+              xl: "3rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      .material-symbols-outlined.filled {
+        font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-200 dark:bg-gray-900 flex justify-center min-h-screen py-0 sm:py-8 transition-colors duration-300"
+  >
+    <!-- Mobile Simulation Container -->
+    <!-- This container simulates a mobile device viewport centered on the desktop screen -->
+    <div
+      class="w-full sm:max-w-[428px] bg-background-light dark:bg-background-dark shadow-2xl sm:rounded-[2.5rem] overflow-hidden flex flex-col relative h-screen sm:h-[880px] border-[8px] border-transparent sm:border-gray-800 dark:sm:border-gray-950 box-content"
+    >
+      <!-- Top Navigation Bar -->
+      <header
+        class="flex items-center justify-between px-6 py-5 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md sticky top-0 z-20 transition-colors"
+      >
+        <div class="flex items-center gap-3 text-[#1b140d] dark:text-white">
+          <div class="size-6 text-primary">
+            <svg
+              class="w-full h-full"
+              fill="none"
+              viewbox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.8261 30.5736C16.7203 29.8826 20.2244 29.4783 24 29.4783C27.7756 29.4783 31.2797 29.8826 34.1739 30.5736C36.9144 31.2278 39.9967 32.7669 41.3563 33.8352L24.8486 7.36089C24.4571 6.73303 23.5429 6.73303 23.1514 7.36089L6.64374 33.8352C8.00331 32.7669 11.0856 31.2278 13.8261 30.5736Z"
+                fill="currentColor"
+              ></path>
+              <path
+                clip-rule="evenodd"
+                d="M39.998 35.764C39.9944 35.7463 39.9875 35.7155 39.9748 35.6706C39.9436 35.5601 39.8949 35.4259 39.8346 35.2825C39.8168 35.2403 39.7989 35.1993 39.7813 35.1602C38.5103 34.2887 35.9788 33.0607 33.7095 32.5189C30.9875 31.8691 27.6413 31.4783 24 31.4783C20.3587 31.4783 17.0125 31.8691 14.2905 32.5189C12.0012 33.0654 9.44505 34.3104 8.18538 35.1832C8.17384 35.2075 8.16216 35.233 8.15052 35.2592C8.09919 35.3751 8.05721 35.4886 8.02977 35.589C8.00356 35.6848 8.00039 35.7333 8.00004 35.7388C8.00004 35.739 8 35.7393 8.00004 35.7388C8.00004 35.7641 8.0104 36.0767 8.68485 36.6314C9.34546 37.1746 10.4222 37.7531 11.9291 38.2772C14.9242 39.319 19.1919 40 24 40C28.8081 40 33.0758 39.319 36.0709 38.2772C37.5778 37.7531 38.6545 37.1746 39.3151 36.6314C39.9006 36.1499 39.9857 35.8511 39.998 35.764ZM4.95178 32.7688L21.4543 6.30267C22.6288 4.4191 25.3712 4.41909 26.5457 6.30267L43.0534 32.777C43.0709 32.8052 43.0878 32.8338 43.104 32.8629L41.3563 33.8352C43.104 32.8629 43.1038 32.8626 43.104 32.8629L43.1051 32.865L43.1065 32.8675L43.1101 32.8739L43.1199 32.8918C43.1276 32.906 43.1377 32.9246 43.1497 32.9473C43.1738 32.9925 43.2062 33.0545 43.244 33.1299C43.319 33.2792 43.4196 33.489 43.5217 33.7317C43.6901 34.1321 44 34.9311 44 35.7391C44 37.4427 43.003 38.7775 41.8558 39.7209C40.6947 40.6757 39.1354 41.4464 37.385 42.0552C33.8654 43.2794 29.133 44 24 44C18.867 44 14.1346 43.2794 10.615 42.0552C8.86463 41.4464 7.30529 40.6757 6.14419 39.7209C4.99695 38.7775 3.99999 37.4427 3.99999 35.7391C3.99999 34.8725 4.29264 34.0922 4.49321 33.6393C4.60375 33.3898 4.71348 33.1804 4.79687 33.0311C4.83898 32.9556 4.87547 32.8935 4.9035 32.8471C4.91754 32.8238 4.92954 32.8043 4.93916 32.7889L4.94662 32.777L4.95178 32.7688ZM35.9868 29.004L24 9.77997L12.0131 29.004C12.4661 28.8609 12.9179 28.7342 13.3617 28.6282C16.4281 27.8961 20.0901 27.4783 24 27.4783C27.9099 27.4783 31.5719 27.8961 34.6383 28.6282C35.082 28.7342 35.5339 28.8609 35.9868 29.004Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+          <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">
+            Nuôi Tôi
+          </h2>
+        </div>
+        <div class="flex items-center gap-4">
+          <button
+            id="menu-btn"
+            class="group flex items-center justify-center rounded-full size-10 bg-[#f3ede7] dark:bg-white/10 hover:bg-[#e7dbcf] dark:hover:bg-white/20 transition-colors"
+          >
+            <span
+              id="menu-btn"
+              class="material-symbols-outlined text-[#1b140d] dark:text-white group-hover:scale-110 transition-transform"
+              >menu</span
+            >
+          </button>
+          <div
+            class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-white dark:border-[#382b20] shadow-sm"
+            data-alt="User profile avatar showing a smiling person"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA09XSMUaIqYd-7TZWPjsvvfcbRB7qyaZYBfZ5ndO2lr_zR2L4eONdSy0btPZezxNchMnjZv1wKJ1movn6rJOzyxewUiLtBCqlnI2m54Jgh8SzWLFi0ai8lL66YhzMBHkQuXdBiEzQOedLFndijbbtYOFJXyFR_xsDfuH3A5D6P8W6DfMhcEO9DsY2y537JcA5lPO00C7GqDK-UloraangHqSjKawpHPuzT3lUNbw6Ma_JKZECSqGBFbwoCggQblYZsHB4WnsFI_KY');
+            "
+          ></div>
+        </div>
+      </header>
+      <!-- Main Scrollable Content -->
+      <main class="flex-1 overflow-y-auto no-scrollbar pb-32">
+        <!-- Page Heading (Hero) -->
+        <section class="px-6 pt-4 pb-8 flex flex-col gap-3">
+          <h1
+            class="text-[#1b140d] dark:text-white text-[32px] font-black leading-[1.1] tracking-[-0.033em]"
+          >
+            Nuôi dưỡng<br />tương lai
+          </h1>
+          <p
+            class="text-[#9a734c] dark:text-[#ccb096] text-base font-medium leading-relaxed"
+          >
+            Mỗi đóng góp nhỏ của bạn chúng tôi sẽ chuyển lại vào MTTQVN dự án
+            chỉ để vui vẻ không mục đích cổ xúy hay ăn lời.
+          </p>
+        </section>
+        <!-- Progress Bar Section -->
+        <section class="px-6 pb-8">
+          <div
+            class="flex flex-col gap-4 p-5 rounded-3xl bg-white dark:bg-[#2c2219] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-[#f0e6dd] dark:border-white/5"
+          >
+            <div class="flex justify-between items-end">
+              <div class="flex flex-col">
+                <span
+                  class="text-[#9a734c] dark:text-[#ccb096] text-[11px] font-bold uppercase tracking-widest mb-1"
+                  id="target-month"
+                ></span>
+
+                <div class="flex items-baseline gap-1">
+                  <span
+                    class="text-[#1b140d] dark:text-white text-3xl font-black"
+                    >65%</span
+                  >
+                </div>
+              </div>
+              <div
+                class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary"
+              >
+                <span class="material-symbols-outlined">trending_up</span>
+              </div>
+            </div>
+            <div
+              class="w-full bg-[#f3ede7] dark:bg-white/10 rounded-full h-3 overflow-hidden"
+            >
+              <div
+                class="bg-primary h-full rounded-full transition-all duration-1000 ease-out"
+                style="width: 65%"
+              ></div>
+            </div>
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-[#1b140d] dark:text-white">65.000.000đ</span>
+              <span class="text-[#9a734c] dark:text-[#ccb096] opacity-80"
+                >100.000.000đ</span
+              >
+            </div>
+          </div>
+        </section>
+        <!-- Donation Grid Section -->
+        <section class="px-6 pb-6">
+          <input
+            type="radio"
+            name="donation_tier"
+            class="peer sr-only"
+            data-amount="10000"
+          />
+
+          <h2
+            class="text-[#1b140d] dark:text-white text-[22px] font-bold leading-tight mb-5 flex items-center gap-2"
+          >
+            Chọn gói ủng hộ
+            <span class="text-primary material-symbols-outlined filled text-sm"
+              >favorite</span
+            >
+          </h2>
+          <div class="grid grid-cols-2 gap-4">
+            <!-- 10k -->
+            <label class="group relative cursor-pointer">
+              <input
+                class="peer sr-only"
+                name="donation_tier"
+                type="radio"
+                data-momo="https://me.momo.vn/QDI7TosAfNuvfJU4t2uduR/8mepZmLpLXxQbMy"
+              />
+              <div
+                class="h-full flex flex-col p-4 rounded-3xl bg-white dark:bg-[#2c2219] border-2 border-transparent peer-checked:border-primary peer-checked:bg-[#fff8f2] dark:peer-checked:bg-primary/10 transition-all shadow-sm"
+              >
+                <div
+                  class="size-10 mb-3 rounded-2xl bg-[#fcf4ec] flex items-center justify-center text-primary"
+                >
+                  <span class="material-symbols-outlined">favorite</span>
+                </div>
+                <p class="text-xl font-bold text-[#1b140d] dark:text-white">
+                  10k
+                </p>
+                <p class="text-xs text-[#9a734c]">Chia sẻ yêu thương</p>
+                <div
+                  class="absolute top-4 right-4 text-primary opacity-0 peer-checked:opacity-100"
+                >
+                  <span class="material-symbols-outlined filled"
+                    >check_circle</span
+                  >
+                </div>
+              </div>
+            </label>
+
+            <!-- 20k -->
+            <label class="group relative cursor-pointer">
+              <input
+                class="peer sr-only"
+                name="donation_tier"
+                type="radio"
+                data-momo="https://me.momo.vn/QDI7TosAfNuvfJU4t2uduR/4QbY7mqwqmvWezq"
+              />
+              <div
+                class="h-full flex flex-col p-4 rounded-3xl bg-white dark:bg-[#2c2219] border-2 border-transparent peer-checked:border-primary peer-checked:bg-[#fff8f2] dark:peer-checked:bg-primary/10 transition-all shadow-sm"
+              >
+                <div
+                  class="size-10 mb-3 rounded-2xl bg-[#fcf4ec] flex items-center justify-center text-primary"
+                >
+                  <span class="material-symbols-outlined"
+                    >emoji_food_beverage</span
+                  >
+                </div>
+                <p class="text-xl font-bold text-[#1b140d] dark:text-white">
+                  20k
+                </p>
+                <p class="text-xs text-[#9a734c]">Ly sữa ấm áp</p>
+                <div
+                  class="absolute top-4 right-4 text-primary opacity-0 peer-checked:opacity-100"
+                >
+                  <span class="material-symbols-outlined filled"
+                    >check_circle</span
+                  >
+                </div>
+              </div>
+            </label>
+
+            <!-- 30k -->
+            <label class="group relative cursor-pointer">
+              <input
+                class="peer sr-only"
+                name="donation_tier"
+                type="radio"
+                data-momo="https://me.momo.vn/QDI7TosAfNuvfJU4t2uduR/BDbDqoWDWgOYdl2"
+              />
+              <div
+                class="h-full flex flex-col p-4 rounded-3xl bg-white dark:bg-[#2c2219] border-2 border-transparent peer-checked:border-primary peer-checked:bg-[#fff8f2] dark:peer-checked:bg-primary/10 transition-all shadow-sm"
+              >
+                <div
+                  class="size-10 mb-3 rounded-2xl bg-[#fcf4ec] flex items-center justify-center text-primary"
+                >
+                  <span class="material-symbols-outlined">restaurant</span>
+                </div>
+                <p class="text-xl font-bold text-[#1b140d] dark:text-white">
+                  30k
+                </p>
+                <p class="text-xs text-[#9a734c]">Bữa ăn giản dị</p>
+                <div
+                  class="absolute top-4 right-4 text-primary opacity-0 peer-checked:opacity-100"
+                >
+                  <span class="material-symbols-outlined filled"
+                    >check_circle</span
+                  >
+                </div>
+              </div>
+            </label>
+
+            <!-- 50k -->
+            <label class="group relative cursor-pointer">
+              <input
+                class="peer sr-only"
+                name="donation_tier"
+                type="radio"
+                data-momo="https://me.momo.vn/QDI7TosAfNuvfJU4t2uduR/8mepZmLpVYArbMy"
+              />
+              <div
+                class="h-full flex flex-col p-4 rounded-3xl bg-white dark:bg-[#2c2219] border-2 border-transparent peer-checked:border-primary peer-checked:bg-[#fff8f2] dark:peer-checked:bg-primary/10 transition-all shadow-sm"
+              >
+                <div
+                  class="size-10 mb-3 rounded-2xl bg-[#fcf4ec] flex items-center justify-center text-primary"
+                >
+                  <span class="material-symbols-outlined">lunch_dining</span>
+                </div>
+                <p class="text-xl font-bold text-[#1b140d] dark:text-white">
+                  50k
+                </p>
+                <p class="text-xs text-[#9a734c]">Bữa trưa dinh dưỡng</p>
+                <div
+                  class="absolute top-4 right-4 text-primary opacity-0 peer-checked:opacity-100"
+                >
+                  <span class="material-symbols-outlined filled"
+                    >check_circle</span
+                  >
+                </div>
+              </div>
+            </label>
+
+            <!-- 100k (Phổ biến) -->
+            <label class="group relative cursor-pointer">
+              <input
+                checked
+                class="peer sr-only"
+                name="donation_tier"
+                type="radio"
+                data-momo="https://me.momo.vn/QDI7TosAfNuvfJU4t2uduR/M7e574Kk033vb2v"
+              />
+              <div
+                class="relative h-full flex flex-col p-4 rounded-3xl bg-white dark:bg-[#2c2219] border-2 border-transparent peer-checked:border-primary peer-checked:bg-[#fff8f2] dark:peer-checked:bg-primary/10 transition-all shadow-sm overflow-hidden"
+              >
+                <div
+                  class="absolute top-0 right-0 bg-primary text-white text-[9px] font-bold px-3 py-1.5 rounded-bl-2xl"
+                >
+                  PHỔ BIẾN
+                </div>
+                <div
+                  class="size-10 mb-3 rounded-2xl bg-[#fcf4ec] flex items-center justify-center text-primary"
+                >
+                  <span class="material-symbols-outlined">calendar_month</span>
+                </div>
+                <p class="text-xl font-bold text-[#1b140d] dark:text-white">
+                  100k
+                </p>
+                <p class="text-xs text-[#9a734c]">Một ngày ăn đủ</p>
+                <div
+                  class="absolute bottom-4 right-4 text-primary opacity-0 peer-checked:opacity-100"
+                >
+                  <span class="material-symbols-outlined filled"
+                    >check_circle</span
+                  >
+                </div>
+              </div>
+            </label>
+
+            <!-- 200k -->
+            <label class="group relative cursor-pointer">
+              <input
+                class="peer sr-only"
+                name="donation_tier"
+                type="radio"
+                data-momo="https://me.momo.vn/QDI7TosAfNuvfJU4t2uduR/M7e574Kk0gDXb2v"
+              />
+              <div
+                class="h-full flex flex-col p-4 rounded-3xl bg-white dark:bg-[#2c2219] border-2 border-transparent peer-checked:border-primary peer-checked:bg-[#fff8f2] dark:peer-checked:bg-primary/10 transition-all shadow-sm"
+              >
+                <div
+                  class="size-10 mb-3 rounded-2xl bg-[#fcf4ec] flex items-center justify-center text-primary"
+                >
+                  <span class="material-symbols-outlined">local_dining</span>
+                </div>
+                <p class="text-xl font-bold text-[#1b140d] dark:text-white">
+                  200k
+                </p>
+                <p class="text-xs text-[#9a734c]">2 ngày dinh dưỡng</p>
+                <div
+                  class="absolute top-4 right-4 text-primary opacity-0 peer-checked:opacity-100"
+                >
+                  <span class="material-symbols-outlined filled"
+                    >check_circle</span
+                  >
+                </div>
+              </div>
+            </label>
+
+            <!-- 300k -->
+            <label class="group relative cursor-pointer">
+              <input
+                class="peer sr-only"
+                name="donation_tier"
+                type="radio"
+                data-momo="https://me.momo.vn/QDI7TosAfNuvfJU4t2uduR/M7e574Kk0Yvxb2v"
+              />
+              <div
+                class="h-full flex flex-col p-4 rounded-3xl bg-white dark:bg-[#2c2219] border-2 border-transparent peer-checked:border-primary peer-checked:bg-[#fff8f2] dark:peer-checked:bg-primary/10 transition-all shadow-sm"
+              >
+                <div
+                  class="size-10 mb-3 rounded-2xl bg-[#fcf4ec] flex items-center justify-center text-primary"
+                >
+                  <span class="material-symbols-outlined">school</span>
+                </div>
+                <p class="text-xl font-bold text-[#1b140d] dark:text-white">
+                  300k
+                </p>
+                <p class="text-xs text-[#9a734c]">Học tập & sữa</p>
+                <div
+                  class="absolute top-4 right-4 text-primary opacity-0 peer-checked:opacity-100"
+                >
+                  <span class="material-symbols-outlined filled"
+                    >check_circle</span
+                  >
+                </div>
+              </div>
+            </label>
+
+            <!-- 500k -->
+            <label class="group relative cursor-pointer">
+              <input
+                class="peer sr-only"
+                name="donation_tier"
+                type="radio"
+                data-momo="https://me.momo.vn/QDI7TosAfNuvfJU4t2uduR/4QbY7mqwYMYWezq"
+              />
+              <div
+                class="h-full flex flex-col p-4 rounded-3xl bg-white dark:bg-[#2c2219] border-2 border-transparent peer-checked:border-primary peer-checked:bg-[#fff8f2] dark:peer-checked:bg-primary/10 transition-all shadow-sm"
+              >
+                <div
+                  class="size-10 mb-3 rounded-2xl bg-[#fcf4ec] flex items-center justify-center text-primary"
+                >
+                  <span class="material-symbols-outlined"
+                    >volunteer_activism</span
+                  >
+                </div>
+                <p class="text-xl font-bold text-[#1b140d] dark:text-white">
+                  500k
+                </p>
+                <p class="text-xs text-[#9a734c]">Người bảo trợ</p>
+                <div
+                  class="absolute top-4 right-4 text-primary opacity-0 peer-checked:opacity-100"
+                >
+                  <span class="material-symbols-outlined filled"
+                    >check_circle</span
+                  >
+                </div>
+              </div>
+            </label>
+          </div>
+        </section>
+        <!-- Custom Amount Input -->
+        <section class="px-6 pb-8">
+          <div
+            class="flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-[#2c2219] shadow-sm border border-dashed border-[#d6cec7] dark:border-white/20 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all"
+          >
+            <div
+              class="bg-[#fcf4ec] dark:bg-primary/20 p-2 rounded-xl text-primary"
+            >
+              <span class="material-symbols-outlined">edit</span>
+            </div>
+            <div class="flex-1">
+              <label
+                class="block text-xs font-bold text-[#9a734c] dark:text-[#ccb096] mb-0.5"
+                for="custom-amount"
+                >Số tiền khác</label
+              >
+              <input
+                class="w-full bg-transparent border-none p-0 text-lg font-bold placeholder:text-gray-300 dark:placeholder:text-gray-600 focus:ring-0 text-[#1b140d] dark:text-white leading-tight"
+                id="custom-amount"
+                placeholder="Nhập số tiền..."
+                type="number"
+              />
+            </div>
+            <span class="text-[#9a734c] dark:text-[#ccb096] font-bold text-sm"
+              >VND</span
+            >
+          </div>
+        </section>
+        <!-- Impact Card (Decorative) -->
+        <section class="px-6 pb-6">
+          <div
+            class="w-full h-40 rounded-3xl bg-cover bg-center relative overflow-hidden shadow-sm group"
+            data-alt="Image of children in a rural area holding hands and smiling"
+            style="
+              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD3XuB8KcgVAV_jNwr7uFVbLbDcRwt0YBKWHZ3q_5BRs-U6dUcZ_co8Uqe_jQ7ZSMFJvrdXRH5cxPaFAkePNlkltAA01MoCiQjuaIxIFJOxWeUxxfX1sctsEOB1sm2Ctfq1LG14AK2vV29Mwa2rEbODazxoJwiSGh4A5EPOPli5esPAzYmsFYk2mm8BqRpP9h0T4WLiJ19ndnW7yhKnVEqPrdKAs6fzmohtX6PtCYnb8rUAi-4o0LHGeoqm8Vo3X6mFLSO9jk1O50s');
+            "
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-5"
+            >
+              <div
+                class="translate-y-2 group-hover:translate-y-0 transition-transform duration-300"
+              >
+                <p class="text-white text-sm font-bold mb-1">
+                  Hành trình yêu thương
+                </p>
+                <div class="flex items-center gap-1 text-white/80 text-xs">
+                  <span class="material-symbols-outlined text-[14px]"
+                    >location_on</span
+                  >
+                  <span data-location="Bình Định">Bình Định, Việt Nam</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- Sticky Bottom CTA -->
+      <div
+        class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background-light via-background-light via-80% to-transparent dark:from-background-dark dark:via-background-dark pt-12 z-30"
+      >
+        <button
+          id="donate-btn"
+          class="w-full bg-primary hover:bg-[#d97b20] active:scale-[0.98] transition-all duration-200 text-white text-lg font-bold h-14 rounded-full shadow-[0_8px_25px_rgba(238,140,43,0.4)] flex items-center justify-center gap-2 group"
+        >
+          <span>Ủng hộ ngay</span>
+          <span
+            class="material-symbols-outlined text-[24px] group-hover:translate-x-1 transition-transform"
+            >arrow_forward</span
+          >
+        </button>
+      </div>
+    </div>
+    <!-- Overlay -->
+    <div
+      id="menu-overlay"
+      class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden"
+    ></div>
+
+    <!-- Menu -->
+    <div
+      id="menu-panel"
+      class="fixed top-0 left-0 h-full w-72 bg-white dark:bg-[#2c2219] z-50 transform -translate-x-full transition-transform duration-300 ease-out shadow-2xl rounded-r-3xl"
+    >
+      <div class="p-6 flex flex-col gap-6">
+        <div class="flex items-center justify-between">
+          <span class="text-xl font-black text-[#1b140d] dark:text-white">
+            Menu
+          </span>
+          <button id="menu-close">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <nav class="flex flex-col gap-4 text-sm font-semibold">
+          <a href="/index.html" class="hover:text-primary">Trang chủ</a>
+          <a href="/nguoinuoi.html" class="hover:text-primary"
+            >Thông tin người nuôi</a
+          >
+        </nav>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const donateBtn = document.getElementById("donate-btn");
+        const customAmountInput = document.getElementById("custom-amount");
+
+        // LINK MOMO CHO SỐ TIỀN NHẬP TAY
+        const MOMO_CUSTOM_LINK = "https://me.momo.vn/QDI7TosAfNuvfJU4t2uduR";
+
+        donateBtn.addEventListener("click", () => {
+          let momoLink = null;
+
+          const selected = document.querySelector(
+            'input[name="donation_tier"]:checked'
+          );
+
+          // ƯU TIÊN GÓI
+          if (selected && selected.dataset.momo) {
+            momoLink = selected.dataset.momo;
+          }
+          // SỐ TIỀN NHẬP TAY
+          else if (customAmountInput.value >= 1000) {
+            momoLink = MOMO_CUSTOM_LINK;
+          }
+
+          if (!momoLink) {
+            alert("Vui lòng chọn gói hoặc nhập số tiền hợp lệ");
+            return;
+          }
+
+          const ok = confirm("Bạn sẽ được chuyển sang MoMo để ủng hộ ❤️");
+          if (!ok) return;
+
+          if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+            window.location.href = momoLink;
+          } else {
+            window.open(momoLink, "_blank");
+          }
+        });
+      });
+      const monthNames = [
+        "tháng 1",
+        "tháng 2",
+        "tháng 3",
+        "tháng 4",
+        "tháng 5",
+        "tháng 6",
+        "tháng 7",
+        "tháng 8",
+        "tháng 9",
+        "tháng 10",
+        "tháng 11",
+        "tháng 12",
+      ];
+
+      const now = new Date();
+      const monthText = monthNames[now.getMonth()];
+
+      document.getElementById(
+        "target-month"
+      ).innerText = `Mục tiêu ${monthText}`;
+    </script>
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const menuPanel = document.getElementById("menu-panel");
+      const menuOverlay = document.getElementById("menu-overlay");
+      const menuClose = document.getElementById("menu-close");
+
+      function openMenu() {
+        menuPanel.classList.remove("-translate-x-full");
+        menuOverlay.classList.remove("hidden");
+      }
+
+      function closeMenu() {
+        menuPanel.classList.add("-translate-x-full");
+        menuOverlay.classList.add("hidden");
+      }
+
+      menuBtn.addEventListener("click", openMenu);
+      menuOverlay.addEventListener("click", closeMenu);
+      menuClose.addEventListener("click", closeMenu);
+    </script>
+  </body>
+</html>

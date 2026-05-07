@@ -34,6 +34,7 @@ canvas{
     align-items:center;
     flex-direction:column;
     text-align:center;
+    padding:20px;
 }
 
 #typing{
@@ -78,12 +79,12 @@ canvas{
 </div>
 
 <!-- NHẠC -->
-<audio id="music" autoplay loop>
+<audio id="music" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-/* MATRIX */
+/* MATRIX EFFECT */
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
@@ -101,19 +102,20 @@ for(let i=0;i<columns;i++){
 }
 
 function draw(){
-    ctx.fillStyle="rgba(0,0,0,0.05)";
+
+    ctx.fillStyle = "rgba(0,0,0,0.05)";
     ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    ctx.fillStyle="#00ff66";
-    ctx.font=fontSize+"px monospace";
+    ctx.fillStyle = "#00ff66";
+    ctx.font = fontSize + "px monospace";
 
     for(let i=0;i<drops.length;i++){
 
-        const text=letters.charAt(Math.floor(Math.random()*letters.length));
+        const text = letters.charAt(Math.floor(Math.random()*letters.length));
 
-        ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+        ctx.fillText(text, i*fontSize, drops[i]*fontSize);
 
-        if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+        if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
             drops[i]=0;
         }
 
@@ -123,26 +125,26 @@ function draw(){
 
 setInterval(draw,33);
 
-/* TEXT */
-const messages=[
+/* TEXT EFFECT */
+const messages = [
     "Đang truy cập hệ thống...",
     "Bypass firewall...",
     "Đang tải dữ liệu...",
-    "Truy cập camera thành công...",
+    "Đang truy cập camera...",
     "Đang giải mã..."
 ];
 
-const typing=document.getElementById("typing");
-const final=document.getElementById("final");
+const typing = document.getElementById("typing");
+const finalText = document.getElementById("final");
 
-let msg=0;
-let char=0;
+let msg = 0;
+let char = 0;
 
 function typeText(){
 
-    if(msg<messages.length){
+    if(msg < messages.length){
 
-        if(char<messages[msg].length){
+        if(char < messages[msg].length){
 
             typing.innerHTML += messages[msg].charAt(char);
 
@@ -154,29 +156,38 @@ function typeText(){
 
             setTimeout(()=>{
 
-                typing.innerHTML="";
+                typing.innerHTML = "";
 
-                char=0;
+                char = 0;
 
                 msg++;
 
                 typeText();
 
             },1000);
-
         }
 
     }else{
 
-        typing.style.display="none";
+        typing.style.display = "none";
 
-        final.style.display="block";
-
+        finalText.style.display = "block";
     }
-
 }
 
 typeText();
+
+/* AUTO PLAY MUSIC */
+const music = document.getElementById("music");
+
+function playMusic(){
+    music.play().catch(()=>{});
+}
+
+window.addEventListener("load", playMusic);
+
+document.body.addEventListener("click", playMusic);
+document.body.addEventListener("touchstart", playMusic);
 </script>
 
 </body>

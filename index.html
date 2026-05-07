@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hacker Troll</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:black;
+    overflow:hidden;
+    font-family:Consolas, monospace;
+    color:#00ff66;
+}
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+#container{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+}
+
+#typing{
+    font-size:28px;
+    text-shadow:0 0 10px #00ff66;
+    border-right:2px solid #00ff66;
+    padding-right:5px;
+    animation:blink .7s infinite;
+}
+
+@keyframes blink{
+    50%{
+        border-color:transparent;
+    }
+}
+
+#final{
+    display:none;
+    font-size:45px;
+    color:red;
+    text-shadow:0 0 20px red;
+    animation:zoom 1s infinite alternate;
+}
+
+@keyframes zoom{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.1);
+    }
+}
+</style>
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div id="container">
+    <div id="typing"></div>
+    <div id="final">⚠ HỆ THỐNG ĐÃ BỊ XÂM NHẬP ⚠</div>
+</div>
+
+<!-- NHẠC -->
+<audio id="music" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* MATRIX */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+
+const drops = [];
+
+for(let i=0;i<columns;i++){
+    drops[i]=1;
+}
+
+function draw(){
+    ctx.fillStyle="rgba(0,0,0,0.05)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle="#00ff66";
+    ctx.font=fontSize+"px monospace";
+
+    for(let i=0;i<drops.length;i++){
+
+        const text=letters.charAt(Math.floor(Math.random()*letters.length));
+
+        ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+        if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+            drops[i]=0;
+        }
+
+        drops[i]++;
+    }
+}
+
+setInterval(draw,33);
+
+/* TEXT */
+const messages=[
+    "Đang truy cập hệ thống...",
+    "Bypass firewall...",
+    "Đang tải dữ liệu...",
+    "Truy cập camera thành công...",
+    "Đang giải mã..."
+];
+
+const typing=document.getElementById("typing");
+const final=document.getElementById("final");
+
+let msg=0;
+let char=0;
+
+function typeText(){
+
+    if(msg<messages.length){
+
+        if(char<messages[msg].length){
+
+            typing.innerHTML += messages[msg].charAt(char);
+
+            char++;
+
+            setTimeout(typeText,60);
+
+        }else{
+
+            setTimeout(()=>{
+
+                typing.innerHTML="";
+
+                char=0;
+
+                msg++;
+
+                typeText();
+
+            },1000);
+
+        }
+
+    }else{
+
+        typing.style.display="none";
+
+        final.style.display="block";
+
+    }
+
+}
+
+typeText();
+</script>
+
+</body>
+</html>

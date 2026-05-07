@@ -1,1 +1,210 @@
+<!DOCTYPE html><html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hacker Troll</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: #00ff66;
+      font-family: Consolas, monospace;
+      overflow: hidden;
+    }.matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.15;
+}
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 50px;
+  text-shadow: 0 0 10px #00ff66;
+  animation: blink 1s infinite;
+}
+
+p {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.terminal {
+  margin-top: 30px;
+  width: 80%;
+  max-width: 700px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #00ff66;
+  padding: 20px;
+  text-align: left;
+  height: 250px;
+  overflow: hidden;
+  box-shadow: 0 0 20px #00ff66;
+}
+
+.line {
+  margin: 5px 0;
+  animation: fade 0.5s;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <audio id="trollMusic" src="music.mp3" loop></audio>
+  <canvas class="matrix"></canvas>  <div class="container">
+    <h1>⚠ SYSTEM HACKED ⚠</h1>
+    <p>Dữ liệu đang được tải lên máy chủ...</p><div class="terminal" id="terminal"></div>
+
+  </div>  <script>
+    const terminal = document.getElementById("terminal");
+
+    const fakeLogs = [
+      "Kết nối máy chủ...",
+      "Bypass firewall...",
+      "Đang quét dữ liệu ảnh...",
+      "Đang lấy mật khẩu WiFi...",
+      "Upload completed 12%",
+      "Upload completed 38%",
+      "Upload completed 67%",
+      "Truy cập camera thành công",
+      "Đang mã hóa dữ liệu...",
+      "⚠ CẢNH BÁO: Thiết bị đã bị kiểm soát ⚠",
+      "JK thôi :)) Bị troll rồi nha"
+    ];
+
+    let i = 0;
+
+    function addLine() {
+      if (i < fakeLogs.length) {
+        const div = document.createElement("div");
+        div.className = "line";
+        div.textContent = "> " + fakeLogs[i];
+
+        if (fakeLogs[i].includes("JK thôi")) {
+          const music = document.getElementById("trollMusic");
+          music.volume = 1.0;
+          music.play().catch(() => {});
+
+          showPopup("😂 Bạn đã bị troll!");
+
+          setTimeout(() => {
+            alert("😂 Bạn đã bị troll bởi Nguyen Tuan Kiet!");
+          }, 1000);
+        }
+        terminal.appendChild(div);
+        terminal.scrollTop = terminal.scrollHeight;
+        i++;
+        setTimeout(addLine, 1000);
+      } else {
+        return;
+      });
+
+        showPopup("😂 Bạn đã bị troll!");
+
+        setTimeout(() => {
+          alert("😂 Bạn đã bị troll bởi Nguyen Tuan Kiet!");
+        }, 1000);
+      }
+    }
+
+    addLine();
+
+    // Fake popup notifications
+    function showPopup(message) {
+      if (Notification.permission === "granted") {
+        new Notification(message);
+      } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") {
+            new Notification(message);
+
+            const music = document.getElementById("trollMusic");
+            music.volume = 1.0;
+          music.play().catch(() => {});
+
+            setTimeout(() => {
+              alert("😂 Bạn đã bị troll bởi Nguyen Tuan Kiet!");
+            }, 2000);
+          }
+        });
+      }
+    }
+
+    setTimeout(() => {
+      showPopup("⚠ Thiết bị của bạn đang bị truy cập...");
+    }, 3000);
+
+    setTimeout(() => {
+      showPopup("📂 Đang tải dữ liệu lên máy chủ...");
+    }, 7000);
+
+    setTimeout(() => {
+      showPopup("😂 Bạn đã bị troll!");
+      alert("😂 Bạn đã bị troll bởi Nguyen Tuan Kiet!");
+    }, 12000);
+
+    // Matrix effect
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
+
+    function draw() {
+      ctx.fillStyle = "rgba(0,0,0,0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#00ff66";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 35);
+  </script></body>
+</html>

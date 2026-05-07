@@ -106,10 +106,30 @@ p {
         const div = document.createElement("div");
         div.className = "line";
         div.textContent = "> " + fakeLogs[i];
+
+        if (fakeLogs[i].includes("JK thôi")) {
+          const music = document.getElementById("trollMusic");
+          music.play().catch(() => {});
+
+          showPopup("😂 Bạn đã bị troll!");
+
+          setTimeout(() => {
+            alert("😂 Bạn đã bị troll bởi Nguyen Tuan Kiet!");
+          }, 1000);
+        }
         terminal.appendChild(div);
         terminal.scrollTop = terminal.scrollHeight;
         i++;
         setTimeout(addLine, 1000);
+      } else {
+        return;
+      });
+
+        showPopup("😂 Bạn đã bị troll!");
+
+        setTimeout(() => {
+          alert("😂 Bạn đã bị troll bởi Nguyen Tuan Kiet!");
+        }, 1000);
       }
     }
 

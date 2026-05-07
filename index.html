@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MENU NGUYEN TUAN KIET</title>
+  <title>Hacker Troll</title>
   <style>
     body {
       margin: 0;
@@ -77,8 +77,9 @@ p {
   </style>
 </head>
 <body>
+  <audio id="trollMusic" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
   <canvas class="matrix"></canvas>  <div class="container">
-    <h1>⚠ MENU TUANKIET ⚠</h1>
+    <h1>⚠ SYSTEM HACKED ⚠</h1>
     <p>Dữ liệu đang được tải lên máy chủ...</p><div class="terminal" id="terminal"></div>
 
   </div>  <script>
@@ -87,15 +88,15 @@ p {
     const fakeLogs = [
       "Kết nối máy chủ...",
       "Bypass firewall...",
-      "Đang vào menu...",
-      "Đang bật menu...",
-      "Loading completed 12%",
-      "Loading completed 38%",
-      "Loading completed 67%",
-      "Nhạy Tâm On✅️",
-      "Bám Đầu On✅️",
-      "⚠ THÔNG BÁO: Đã Bật Menu ⚠",
-      "CHÚC BẠN CHƠI GAME VUI VẺ!"
+      "Đang quét dữ liệu ảnh...",
+      "Đang lấy mật khẩu WiFi...",
+      "Upload completed 12%",
+      "Upload completed 38%",
+      "Upload completed 67%",
+      "Truy cập camera thành công",
+      "Đang mã hóa dữ liệu...",
+      "⚠ CẢNH BÁO: Thiết bị đã bị kiểm soát ⚠",
+      "JK thôi :)) Bị troll rồi nha"
     ];
 
     let i = 0;
@@ -122,6 +123,13 @@ p {
         Notification.requestPermission().then(permission => {
           if (permission === "granted") {
             new Notification(message);
+
+            const music = document.getElementById("trollMusic");
+            music.play().catch(() => {});
+
+            setTimeout(() => {
+              alert("😂 Bạn đã bị troll bởi Nguyen Tuan Kiet!");
+            }, 2000);
           }
         });
       }
@@ -136,8 +144,8 @@ p {
     }, 7000);
 
     setTimeout(() => {
-      showPopup("NHẠY TÂM , BÁM ĐẦU ON✅️!");
-      alert("MENU bởi Nguyen Tuan Kiet!");
+      showPopup("😂 Bạn đã bị troll!");
+      alert("😂 Bạn đã bị troll bởi Nguyen Tuan Kiet!");
     }, 12000);
 
     // Matrix effect
